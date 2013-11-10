@@ -1,0 +1,7 @@
+<h1>Products, Y'all</h1>
+
+<ol>
+<% @products.each do |product| %>
+  <li><%= link_to product[:name], "/products/#{product.id}" %></li>
+<% end %>
+</ol>
