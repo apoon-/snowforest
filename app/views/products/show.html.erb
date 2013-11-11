@@ -6,14 +6,12 @@
 <p>Description: <%= @product[:description] %></p>
 <p>Price: $<%= @product.formatted_price %></p>
 
-<% if current_user %>
-
   <h3>Reviews</h3>
 
   <p>Reviews for <%= @product.name %></p>
 
   <% @product.reviews.each do |review| %>
-    <p>
+    <p>      
       <%= review.comment %>
       <br>
       <% if review.user !=nil %>
@@ -22,6 +20,9 @@
       <% end %>
     </p>
   <% end %>
+
+
+<% if current_user %>
 
   <h4> New Review </h4>
 
