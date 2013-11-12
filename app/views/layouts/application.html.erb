@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<div id="userinfo">
   <% if flash[:notice] %>  
     <p id='notice'><%= flash[:notice] %></p>
   <% end %>
@@ -15,15 +16,20 @@
     <p id="alert"><%= flash[:alert] %></p>
   <% end %>
 
-  <p class="userinfo">
+  <p class="userstatus">
     <% if current_user %>
       Signed in as <%= link_to current_user.name, "/users/#{current_user.id}" %> <%= link_to "Log Out", session_path("current"), :method => :delete %>
     <% else %>
       <%= link_to "Log In", new_session_path %> or <%= link_to "Sign Up", new_user_path %>
     <% end %>
   </p>
+</div>
 
+<div class="header"> <h1>This is not the <img src="http://www.ucl.ac.uk/laws/experts/selfservice/images/amazon-logo.jpg"> you're looking for</h1> </div>
+
+<div id="content">
   <%= yield %>
+</div>
 
 </body>
 </html>
