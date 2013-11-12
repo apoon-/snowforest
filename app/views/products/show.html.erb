@@ -21,6 +21,16 @@
     </p>
   <% end %>
 
+  <h3>Images</h3>
+
+  <p>Images for <%= @product.name %></p>
+
+  <% @product.images.each do |image| %>
+    <p>      
+    <%=image_tag(image.path)%>
+    </p>
+  <% end %>
+
 
 <% if current_user %>
 
@@ -48,7 +58,30 @@
       </div>
     <% end %>
 
-  <% else %>
-    <p>Please <%= link_to "log in", new_session_path %> to add a review </p>
+  <h4> New Image </h4>
 
+  <%= form_for([@product, @image]) do |f| %>
+    <% if @image.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+        <ul>
+        <% @image.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :path %><br />
+        <%= f.file_field :path %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <p>Please <%= link_to "log in", new_session_path %> to add an image or review </p>    
 <% end %>

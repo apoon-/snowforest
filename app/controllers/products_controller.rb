@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
     if current_user
       @review = @product.reviews.build
+      @image = @product.images.build
     end
   end
 
@@ -19,6 +20,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    # @product.images.build unless @product.images 
   end
 
   def create
@@ -50,7 +52,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price_in_cents)
+    params.require(:product).permit(:name, :description, :price_in_cents, :images_attributes => [:path])
   end
 
 end

@@ -1,0 +1,7 @@
+<h1> User Profile </h1>
+
+<%= link_to "Back to Products", products_url %> <%= link_to "Edit User", edit_user_url(@user) %> <%= link_to "Delete User", @user, :confirm => "Are you sure you want to delete this user?", :method => :delete%>
+
+<p>Name: <%= @user[:name] %></p>
+<p>Email: <%= @user[:email] %></p>
+<%= image_tag (@user.avatar) %>

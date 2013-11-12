@@ -1,19 +1,25 @@
 Snowforest::Application.routes.draw do
   
-  get "reviews/show"
-  get "reviews/new"
-  get "reviews/edit"
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
-  get "users/new"
-  get "users/create"
+  # get "images/index"
+  # get "images/new"
+  # get "images/create"
+  # get "images/show"
+  # get "images/destroy"
+  # get "reviews/show"
+  # get "reviews/new"
+  # get "reviews/edit"
+  # get "sessions/new"
+  # get "sessions/create"
+  # get "sessions/destroy"
+  # get "users/new"
+  # get "users/create"
 
-  resources :users, :only => [:new, :create]
+  resources :users, :except => [:index]
   resources :sessions, :only => [:new, :create, :destroy]
 
   resources :products do
     resources :reviews, :except => [:index]
+    resources :images 
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

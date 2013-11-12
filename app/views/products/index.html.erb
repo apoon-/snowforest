@@ -1,10 +1,13 @@
-<h1>This is not the <img src="http://www.ucl.ac.uk/laws/experts/selfservice/images/amazon-logo.jpg"> you're looking for</h1>
+<div class="header"> <h1>This is not the <img src="http://www.ucl.ac.uk/laws/experts/selfservice/images/amazon-logo.jpg"> you're looking for</h1> </div>
 
 <%= link_to "Add a New Product", new_product_path %>
 
 <ol>
 <% @products.each do |product| %>
-  <li> <%= link_to product[:name], "/products/#{product.id}" %></li>
-  $<%= product.formatted_price %> 
+  <li> <%= link_to product.name, product_path(product) %></li>
+    $<%= product.formatted_price %>
+  <%= image_tag(product.images.first.path.url) if product.images.count > 0 %>
 <% end %>
 </ol>
+
+

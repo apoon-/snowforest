@@ -1,3 +1,5 @@
+<h1>Add an Image for your product</h1>
+
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -15,20 +17,6 @@
     <%= f.label :name %> 
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :description %> 
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :price_in_cents %>
-    <%= f.number_field :price_in_cents %>
-  </div>
-  <%= f.fields_for :images, Image.new do |image| %>
-    <div class="field">
-      <%= image.label :path %>
-      <%= image.file_field :path %>
-    </div>
-  <% end %>
   <div class="actions">
     <br><%= f.submit %>
   </div>
