@@ -1,13 +1,18 @@
 
+<div class="menu">
+  <%= link_to "+  Add a New Product", new_product_path %>
+</div>
 
-<%= link_to "Add a New Product", new_product_path %>
-
-<ol>
+<ul>
 <% @products.each do |product| %>
-  <li> <%= link_to product.name, product_path(product) %></li>
-    $<%= product.formatted_price %>
+<div class="product">
+  <li> <%= link_to product.name.upcase, product_path(product) %></br>
+    $<%= product.formatted_price %></li>
   <%= image_tag(product.images.first.path.url) if product.images.count > 0 %>
+
+</div>
 <% end %>
-</ol>
+
+</ul>
 
 
