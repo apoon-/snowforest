@@ -16,12 +16,23 @@ class ReviewsController < ApplicationController
     #   :product_id => @product.id,
     #   :user_id => current_user.id
     # )
+#depreciated HTML non-AJAX code
+    # if @review.save
+    #   redirect_to products_path, notice: "Review created successfully"
+    # else
+    #   render :action => :show
+    # end
 
-    if @review.save
-      redirect_to products_path, notice: "Review created successfully"
-    else
-      render :action => :show
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to product_path(@product.id), notice: "Review created successfully."} #same as before
+        format.js {} #create.js.erb
+      else
+        format.html { render 'products/show', alert: "Error in posting review." } #same as before
+        format.js {} # create.js.erb
+      end
     end
+
   end
 
   def destroy

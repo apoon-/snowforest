@@ -22,7 +22,6 @@
   border: 0;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  color: white;
 }
 
 .header {
@@ -71,7 +70,19 @@
   text-align: center;
   font-size: 3em;
   font-weight: 400;
-  border: 3px solid white;
+  border-bottom: 5px solid white;
+  color: white;
+}
+
+#content p, label {
+  color: white;
+}
+
+#content h2, h3, h4 {
+  color: #2ecc71;
+  font-size: 1.5em;
+  border-bottom: 2px solid #2ecc71;
+  margin-bottom: 10px;
 }
 
 .product {
@@ -140,4 +151,54 @@
   padding: 11px 5px 5px 5px;
   margin: 2px;
   font-weight: 100;
+}
+
+.button a:hover{
+  opacity: 0.7;
+}
+
+
+.picture img {
+  max-height: 500px;
+  padding: 10px;
+}
+
+.info {
+  position: absolute;
+  right: 0%;
+  top: 5%;
+  text-align: right;
+  margin: 10px 10px 10px 20px;
+  padding: 5px 10px 5px 20px;
+}
+
+.alert {
+  position: absolute;
+  background-color: #C75142;
+  color: white;
+  font-size: 3em;
+  z-index: 99999;
+  margin: 0 auto;
+  padding: 15px;
+  opacity: 0.7;
+  left: 35%;
+}
+
+#new_review textarea {
+  width: 300px;
+  height: 50px;
+}
+
+.actions input {
+  color: white;
+  text-decoration: none;
+  padding: 5px 15px 5px 15px;
+  font-weight: 100; 
+  font-size: 0.8em; 
+  background-color: #2ecc71;
+;
+}
+
+.actions input:hover {
+  opacity: 0.7;
 }

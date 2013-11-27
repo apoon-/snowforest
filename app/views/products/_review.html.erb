@@ -1,10 +1,13 @@
+
 <% @product.reviews.each do |review| %>
-  <p>      
-    <%= review.comment %>
-    <br>
-    <% if review.user !=nil %>
-      <em> by <%= review.user.name %></em>
-      Added on: <%= review.created_at %>
-    <% end %>
-  </p>
+  <div class ="review">
+    <p class = "comment">
+      <%= review.comment %>
+    </p>
+    <div class="poster">
+      <% if review.user !=nil %>
+        <em> by <%= review.user.name %></em> on: <%= review.created_at %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

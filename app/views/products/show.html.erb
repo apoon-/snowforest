@@ -1,7 +1,15 @@
 <div class="button"><%= link_to "< Back to Products", products_url %> <%= link_to "Edit Products", edit_product_url(@product) %> <%= link_to "Delete Product", @product, :confirm => "Are you sure you want to delete this product?", :method => :delete%></div>
-
+    
+<div id="review-form-errors">
+  <%= render :partial => 'reviewerror' %>
+</div>
 
 <h1><%= @product[:name].upcase %></h1>
+
+<div class="picture"><%= render 'image' %></div>
+
+<div class="info">
+
 <p>Description: <%= @product[:description] %></p>
 <p>Price: $<%= @product.formatted_price %></p>
 
@@ -9,19 +17,17 @@
 
   <p>Reviews for <%= @product.name %></p>
 
-  <p><%= render 'review' %></p>
-
-  <h3>Images</h3>
-
-  <p>Images for <%= @product.name %></p>
-
-  <p><%= render 'image' %></p>
+    <div id="review-list">
+      <p><%= render :partial => 'review' %></p>
+    </div>
 
 <% if current_user %>
 
   <h4> New Review </h4>
 
+<div id="new_review">
   <p><%= render 'newreview' %></p>
+</div>
 
   <h4> New Image </h4>
 
@@ -30,3 +36,21 @@
   <% else %>
     <p>Please <%= link_to "log in", new_session_path %> to add an image or review </p>    
 <% end %>
+
+</div>
+
+<script type="text/javascript">
+  $(function() {
+     $("#new_review")
+        .on('ajax:beforeSend', function() { 
+          $("input[type='submit']") 
+            .val('Saving...')
+            .attr('disabled', 'disabled');
+        })
+        .on('ajax:complete', function() {
+          $("input[type='submit']")
+            .val('Create Review')
+            .removeAttr('disabled');
+        });
+  });
+</script>
